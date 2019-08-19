@@ -102,7 +102,7 @@ public class Venta {
     }
     
     public void formaPago(Venta venta){
-        
+        System.out.println("En desarrollo");
     }
     
     public ArrayList buscarNombre(String nombre) throws SQLException{

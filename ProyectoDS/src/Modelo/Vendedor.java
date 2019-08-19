@@ -20,27 +20,24 @@ public class Vendedor extends Empleado{
     public Vendedor(String id, String nombre, String apellido, Modelo.Local Local, String tipoUsuario, String usuario, String clave) {
         super(id, nombre, apellido, Local, tipoUsuario, usuario, clave);
     }
-    public void solicitarActualizarDB(){
-        
-    }
     
     public void ingresarCliente(Cliente cliente){
-        
+        System.out.println("Funcionalidad en construccion");
     }
     
     public void generarVenta(int id, Date fecha){
-        venta = new Venta(id, fecha,this.vendedor);
+        System.out.println("Funcionalidad en construccion");
     }
     
     public void generarCotizacion(){
-        
+        System.out.println("Funcionalidad en construccion");
     }
     
     public void modificarCliente(Cliente cliente){
-        
+        System.out.println("Funcionalidad en construccion");
     }
     
     public void modificarCotizacion(Cotizacion cotizacion){
-        
+        System.out.println("Funcionalidad en construccion");
     }
 }

@@ -25,7 +25,7 @@ public class NewMain {
         Date feca = new Date();
         List<Producto> productosCo = new ArrayList();
         Cliente c = new Cliente("123", "Juan", "Alimañana", "287", "Gye", "8732");
-        Local l = new Local(0,"Gye");
+        Local l = new Local(1,"Gye");
         Empleado v = new Vendedor("123", "Pepe", "Lavoe", l, "Vendedor", "pelavo", "123");
         Producto p1 = new Producto(0, "Compu", "Teclado", "Teclado modelox", 10.5);
         Producto p2 = new Producto(1, "Compu", "Mouse", "Mouse fx", 5.8);
@@ -51,7 +51,8 @@ public class NewMain {
         
         cot.imprimirCotizacion();
         
-        
+        //l.mostrarInventario();
+        l.consultarProductosCategoria("COMPUTO");
     }
     
 }

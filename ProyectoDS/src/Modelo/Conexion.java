@@ -5,16 +5,13 @@
  */
 package Modelo;
 
-import com.mysql.jdbc.*;
 import java.sql.DriverManager;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.CallableStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  *
@@ -25,26 +22,26 @@ public class Conexion {
     private String driver = "com.mysql.jdbc.Driver";
     private String user = "root";
     private String password = "123456";
-    private String url = "jdbc:mysql://localhost:3306/DBFinalDS";
+    private String url = "jdbc:mysql://localhost/proyectods";
     private ResultSet rs;
     private Statement sql;
-    
+   
     public Conexion(){
         try {
             Class.forName(driver);
             conn = DriverManager.getConnection(url, user, password);
             if(conn != null){
                 System.out.println("Conexion establecida...");
-                sql = (Statement) conn.createStatement();
+                sql = conn.createStatement();
+                rs = sql.executeQuery("select * from producto");
+                while(rs.next()){
+                    System.out.println(rs.getString("ID")+" "+rs.getString("NOMBRE")+" "+rs.getString("DESCRIPCION"));
+                }
             }
             
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error al conectar "+e);
         }
-    }
-    
-    public Connection getConnection(){
-        return conn;
     }
     
     public void desconectar(){
@@ -68,6 +65,27 @@ public class Conexion {
     public Statement getSql() {
         return sql;
     }
+    
+    public void consultarProductosLocal(int idLocal) throws SQLException{
+        sql = conn.createStatement();
+        rs = sql.executeQuery("SELECT * FROM PRODUCTO_LOCAL WHERE ID_LOCAL="+idLocal);
+        while(rs.next()){
+            System.out.println(rs.getString("ID")+" "+rs.getString("NOMBRE_PRODUCTO")+" "+rs.getString("CANTIDAD"));
+        }
+    }
+    
+    public void consultarProductosCategoriaLocal(int idLocal, String categoria) throws SQLException{
+        CallableStatement stmt = conn.prepareCall("{CALL FILTRAR_CATEGORIA(?,?)}");
+        stmt.setString(1, categoria);
+        stmt.setInt(2, idLocal);
+        ResultSet resultado = stmt.executeQuery();
+        while(resultado.next()){
+            System.out.println(resultado.getString("NOMBRE")+" "+resultado.getString("DESCRIPCION")+" "+resultado.getString("CANTIDAD"));
+            
+        }
+    }
+    
+    
     public ArrayList buscarProductoNombre(String nombre) throws SQLException{
         CallableStatement stmt = conn.prepareCall("{CALL buscarProductoNombre(?)}");
         stmt.setString(1, nombre);

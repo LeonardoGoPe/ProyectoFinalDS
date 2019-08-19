@@ -68,6 +68,14 @@ public class Bodega {
     public void setRepartidores(List repartidores) {
         this.repartidores = repartidores;
     }
+
+    public Map<Producto, Integer> getInventario() {
+        return inventario;
+    }
+
+    public void setInventario(Map<Producto, Integer> inventario) {
+        this.inventario = inventario;
+    }
     
     public void agregarProductoInventario(Producto producto, int cantidad){
         for (Producto productoLista : inventario.keySet()) {
@@ -82,6 +90,15 @@ public class Bodega {
         for (Producto producto : inventario.keySet()) {
             System.out.println("Producto: " + producto.getNombre() + " -> Cantidad: " + inventario.get(producto));
         }
+    }
+    
+    public void quitarProductoInventario(Producto producto, int cantidad){
+        for (Producto productoLista : inventario.keySet()) {
+            if(productoLista.getId() == producto.getId()){
+                inventario.put(producto, inventario.get(producto) - cantidad);
+            }
+        }
+        inventario.put(producto, cantidad);
     }
     
 }

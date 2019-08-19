@@ -12,9 +12,10 @@ package Modelo;
 public class Repartidor {
     private int numeroEntregas;
     private boolean disponible;
+    private String nombre;
 
-    public Repartidor(int numeroEntregas, boolean disponible) {
-        this.numeroEntregas = numeroEntregas;
+    public Repartidor(String nombre, boolean disponible) {
+        this.nombre = nombre;
         this.disponible = disponible;
     }
 
@@ -33,6 +34,15 @@ public class Repartidor {
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
     
     
 }

@@ -3,13 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/ProyectoDS/src/Modelo/Administrador.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/ProyectoDS/src/Modelo/NewMain.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/ProyectoDS/src/Modelo/Local.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/ProyectoDS/src/Modelo/Cotizacion.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/ProyectoDS/src/Modelo/Conexion.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/ProyectoDS/src/Modelo/Venta.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/ProyectoDS/src/Modelo/Vendedor.java</file>
+            <file>file:/C:/Users/USER/Desktop/GIT/ProyectoFinalDS/ProyectoDS/src/Modelo/JefeBodega.java</file>
+            <file>file:/C:/Users/USER/Desktop/GIT/ProyectoFinalDS/ProyectoDS/src/Modelo/Local.java</file>
+            <file>file:/C:/Users/USER/Desktop/GIT/ProyectoFinalDS/ProyectoDS/src/Modelo/Bodega.java</file>
+            <file>file:/C:/Users/USER/Desktop/GIT/ProyectoFinalDS/ProyectoDS/src/Modelo/Gerente.java</file>
+            <file>file:/C:/Users/USER/Desktop/GIT/ProyectoFinalDS/ProyectoDS/src/Modelo/Repartidor.java</file>
+            <file>file:/C:/Users/USER/Desktop/GIT/ProyectoFinalDS/ProyectoDS/src/Modelo/NewMain.java</file>
+            <file>file:/C:/Users/USER/Desktop/GIT/ProyectoFinalDS/ProyectoDS/src/Modelo/Producto.java</file>
+            <file>file:/C:/Users/USER/Desktop/GIT/ProyectoFinalDS/ProyectoDS/src/Modelo/Administrador.java</file>
+            <file>file:/C:/Users/USER/Desktop/GIT/ProyectoFinalDS/ProyectoDS/src/Modelo/Conexion.java</file>
         </group>
     </open-files>
 </project-private>

@@ -35,15 +35,17 @@ public class Gerente extends Empleado{
     }
     
     
-    public void solicitarProductos(Bodega bodega, Local local){
-        
-    }
-    
-    public void solicitarActualizarDB(){
-        
+    public void solicitarProductos(Bodega bodega, Local local, Producto producto, int cantidad){
+        for (Producto p : bodega.getInventario().keySet()) {
+            if(p.equals(producto)){
+                bodega.quitarProductoInventario(producto, cantidad);
+                local.agregarProductoInventario(producto, cantidad);
+            }
+        }
     }
     
     public void asignarPermisos(Empleado empleado){
+        empleado.setTipoUsuario("Administrador");
         
     }
 }

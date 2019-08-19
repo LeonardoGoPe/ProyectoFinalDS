@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,21 +25,94 @@ public class Local {
     private List<Producto> productos;
     private ArrayList consulta;
     private Map<Producto,Integer> inventario;
-
+    private Conexion cnx = new Conexion();
+    
     public Local(int id, String direccion) {
         this.id = id;
         this.direccion = direccion;
         this.inventario = new HashMap<>();
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public Telefono getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(Telefono telefono) {
+        this.telefono = telefono;
+    }
+
+    public Gerente getGerente() {
+        return gerente;
+    }
+
+    public void setGerente(Gerente gerente) {
+        this.gerente = gerente;
+    }
+
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
+    }
+
+    public List<Vendedor> getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(List<Vendedor> vendedor) {
+        this.vendedor = vendedor;
+    }
+
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
+    }
+
+    public ArrayList getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(ArrayList consulta) {
+        this.consulta = consulta;
+    }
+
+    public Map<Producto, Integer> getInventario() {
+        return inventario;
+    }
+
+    public void setInventario(Map<Producto, Integer> inventario) {
+        this.inventario = inventario;
+    }
     
     
     
     public void cambiarAdministrador(Administrador administrador){
-        
+        this.administrador = administrador;
     }
     
     public void cambiarGerente(Gerente gerente){
-        
+        this.gerente = gerente;
     }
     
     public boolean agregarProductoInventario(Producto producto, int cantidad){
@@ -52,18 +126,12 @@ public class Local {
         return true;
     }
     
-    public void mostrarInventario(){
-        for (Producto producto : inventario.keySet()) {
-            System.out.println("Producto: " + producto.getNombre() + " -> Cantidad: " + inventario.get(producto));
-        }
+    public void mostrarInventario() throws SQLException{
+        cnx.consultarProductosLocal(getId());
     }
     
-    public void consultarProductosCategoria(String categoria){
-        for (Producto producto : inventario.keySet()) {
-            if(producto.getCategoria().equals(categoria)){
-                System.out.println("Producto: " + producto.getNombre() + " -> Cantidad: " + inventario.get(producto));
-            }
-        }
+    public void consultarProductosCategoria(String categoria) throws SQLException{
+        cnx.consultarProductosCategoriaLocal(getId(), categoria);
     }
     
     

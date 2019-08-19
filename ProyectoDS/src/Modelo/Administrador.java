@@ -16,18 +16,18 @@ public class Administrador extends Empleado{
     }
     
     public void actualizarBD(){
-        
+        System.out.println("Funcionalidad en construccion");
     }
     
     public void modificarBD(){
-        
+        System.out.println("Funcionalidad en construccion");
     }
     
     public void eliminarLBD(){
-        
+        System.out.println("Funcionalidad en construccion");
     }
     
     public void crearBD(){
-        
+        System.out.println("Funcionalidad en construccion");
     }
 }
