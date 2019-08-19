@@ -32,11 +32,6 @@ public class Conexion {
             conn = DriverManager.getConnection(url, user, password);
             if(conn != null){
                 System.out.println("Conexion establecida...");
-                sql = conn.createStatement();
-                rs = sql.executeQuery("select * from producto");
-                while(rs.next()){
-                    System.out.println(rs.getString("ID")+" "+rs.getString("NOMBRE")+" "+rs.getString("DESCRIPCION"));
-                }
             }
             
         } catch (ClassNotFoundException | SQLException e) {
@@ -65,40 +60,88 @@ public class Conexion {
     public Statement getSql() {
         return sql;
     }
+
+    public Connection getConn() {
+        return conn;
+    }
+
+    public void setConn(Connection conn) {
+        this.conn = conn;
+    }
     
-    public void consultarProductosLocal(int idLocal) throws SQLException{
+    public String consultarProductos(int id, String tipoEstablecimiento) throws SQLException{
+        String format = "%1$s %2$40s %3$30s";
+        String someLine = "";
         sql = conn.createStatement();
-        rs = sql.executeQuery("SELECT * FROM PRODUCTO_LOCAL WHERE ID_LOCAL="+idLocal);
+        if(tipoEstablecimiento.equals("LOCAL")){
+            rs = sql.executeQuery("SELECT * FROM PRODUCTO_LOCAL WHERE ID_LOCAL="+id);
+        }
+        else{
+            rs = sql.executeQuery("SELECT * FROM PRODUCTO_BODEGA WHERE ID_BODEGA="+id);
+        }
+        someLine += String.format(format, "ID", "NOMBRE_PRODUCTO","CANTIDAD"+"\n");
         while(rs.next()){
             System.out.println(rs.getString("ID")+" "+rs.getString("NOMBRE_PRODUCTO")+" "+rs.getString("CANTIDAD"));
+            someLine += String.format(format, rs.getString("ID"), rs.getString("NOMBRE_PRODUCTO"),rs.getString("CANTIDAD")+"\n");
         }
+        return someLine;
     }
     
-    public void consultarProductosCategoriaLocal(int idLocal, String categoria) throws SQLException{
-        CallableStatement stmt = conn.prepareCall("{CALL FILTRAR_CATEGORIA(?,?)}");
-        stmt.setString(1, categoria);
-        stmt.setInt(2, idLocal);
+    public String consultarProductosCategoria(int id, String categoria,String tipoEstablecimiento) throws SQLException{
+        CallableStatement stmt;
+        String format = "%1$s %2$40s %3$30s";
+        String someLine = "";
+        if(tipoEstablecimiento.equals("LOCAL")){
+            stmt = conn.prepareCall("{CALL FILTRAR_CATEGORIA_LOCAL(?,?)}");
+            stmt.setString(1, categoria);
+            stmt.setInt(2, id);
+        }
+        else{
+            stmt = conn.prepareCall("{CALL FILTRAR_CATEGORIA_BODEGA(?,?)}");
+            stmt.setString(1, categoria);
+            stmt.setInt(2, id);
+        }
         ResultSet resultado = stmt.executeQuery();
+        someLine += String.format(format, "NOMBRE", "DESCRIPCION","CANTIDAD"+"\n");
         while(resultado.next()){
             System.out.println(resultado.getString("NOMBRE")+" "+resultado.getString("DESCRIPCION")+" "+resultado.getString("CANTIDAD"));
-            
+            someLine += String.format(format, resultado.getString("NOMBRE"), resultado.getString("DESCRIPCION"),resultado.getString("CANTIDAD")+"\n");
         }
+        return someLine;
     }
     
+    public void quitarProductoBodega(int id, int nuevaCantidad, String nombreProducto) throws SQLException{
+        CallableStatement stmt;
+        stmt = conn.prepareCall("{CALL QUITAR_STOCK_BODEGA(?,?,?)}");
+        stmt.setInt(1, nuevaCantidad);
+        stmt.setInt(2, id);
+        stmt.setString(3, nombreProducto);
+        stmt.executeQuery();
+    }
     
-    public ArrayList buscarProductoNombre(String nombre) throws SQLException{
-        CallableStatement stmt = conn.prepareCall("{CALL buscarProductoNombre(?)}");
-        stmt.setString(1, nombre);
+    public void agregarProductosLocal(int id, int nuevaCantidad, String nombreProducto) throws SQLException{
+        CallableStatement stmt;
+        stmt = conn.prepareCall("{CALL AGREGAR_STOCK_LOCAL(?,?,?)}");
+        stmt.setInt(1, nuevaCantidad);
+        stmt.setInt(2, id);
+        stmt.setString(3, nombreProducto);
+        stmt.executeQuery();
+    }
+    
+        public String validarUsuario(String usuario, String clave) throws SQLException{
+        CallableStatement stmt = conn.prepareCall("{CALL USUARIOS()}");
         ResultSet resultado = stmt.executeQuery();
-        ArrayList lista = new ArrayList();
         while(resultado.next()){
-            lista.add(resultado.getString("ID"));
-            lista.add(resultado.getString("NOMBRE"));
-            lista.add(resultado.getString("DESCRIPCION"));
-            lista.add(resultado.getString("PRECIO"));
-            lista.add(resultado.getString("STOCK"));
-            lista.add(resultado.getString("CATEGORIA"));
+            if(resultado.getString("USERNAME").equals(usuario) && resultado.getString("CLAVE").equals(clave))
+                return resultado.getString("TIPO_USUARIO");
         }
-        return lista;
+        return "El usuario no existe";
     }
+        
+        public void cambiarPermisos(String usuario) throws SQLException{
+            CallableStatement stmt;
+            stmt = conn.prepareCall("{CALL CAMBIAR_PERMISOS(?)}");
+            stmt.setString(1, usuario);
+            stmt.executeQuery();
+        }
 }

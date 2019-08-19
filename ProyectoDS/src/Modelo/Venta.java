@@ -106,7 +106,7 @@ public class Venta {
     }
     
     public ArrayList buscarNombre(String nombre) throws SQLException{
-        return conexion.buscarProductoNombre(nombre);
+        return null;
     }
     
 }

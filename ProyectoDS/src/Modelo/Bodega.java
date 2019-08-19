@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -21,6 +22,7 @@ public class Bodega {
     private JefeBodega jefeBodega;
     private List repartidores;
     private Map<Producto,Integer> inventario;
+    private Conexion cnx = new Conexion();
 
     public Bodega(int id, String direccion) {
         this.id = id;
@@ -77,28 +79,16 @@ public class Bodega {
         this.inventario = inventario;
     }
     
-    public void agregarProductoInventario(Producto producto, int cantidad){
-        for (Producto productoLista : inventario.keySet()) {
-            if(productoLista.getId() == producto.getId()){
-                inventario.put(producto, inventario.get(producto) + cantidad);
-            }
-        }
-        inventario.put(producto, cantidad);
+    public void mostrarProductosCategoria(String categoria) throws SQLException{
+        cnx.consultarProductosCategoria(getId(), categoria, "BODEGA");
     }
     
-    public void mostrarInventario(){
-        for (Producto producto : inventario.keySet()) {
-            System.out.println("Producto: " + producto.getNombre() + " -> Cantidad: " + inventario.get(producto));
-        }
+    public void mostrarInventario() throws SQLException{
+        cnx.consultarProductos(getId(), "BODEGA");
     }
     
-    public void quitarProductoInventario(Producto producto, int cantidad){
-        for (Producto productoLista : inventario.keySet()) {
-            if(productoLista.getId() == producto.getId()){
-                inventario.put(producto, inventario.get(producto) - cantidad);
-            }
-        }
-        inventario.put(producto, cantidad);
+    public void quitarProductoInventario(String producto, int cantidad) throws SQLException{
+        cnx.quitarProductoBodega(getId(), cantidad, producto);
     }
     
 }

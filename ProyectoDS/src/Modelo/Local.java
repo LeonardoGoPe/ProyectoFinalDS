@@ -115,23 +115,16 @@ public class Local {
         this.gerente = gerente;
     }
     
-    public boolean agregarProductoInventario(Producto producto, int cantidad){
-        for (Producto productoLista : inventario.keySet()) {
-            if(productoLista.getId() == producto.getId()){
-                inventario.put(producto, inventario.get(producto) + cantidad);
-                return true;
-            }
-        }
-        inventario.put(producto, cantidad);
-        return true;
+    public void agregarProductoInventario(String producto, int cantidad) throws SQLException{
+        cnx.agregarProductosLocal(getId(), cantidad, producto);
     }
     
     public void mostrarInventario() throws SQLException{
-        cnx.consultarProductosLocal(getId());
+        cnx.consultarProductos(getId(), "LOCAL");
     }
     
-    public void consultarProductosCategoria(String categoria) throws SQLException{
-        cnx.consultarProductosCategoriaLocal(getId(), categoria);
+    public void mostrarProductosCategoria(String categoria) throws SQLException{
+        cnx.consultarProductosCategoria(getId(), categoria, "LOCAL");
     }
     
     
