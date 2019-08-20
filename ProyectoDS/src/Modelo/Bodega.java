@@ -84,7 +84,7 @@ public class Bodega {
     }
     
     public void mostrarInventario() throws SQLException{
-        cnx.consultarProductos(getId(), "BODEGA");
+        cnx.consultarProductos(getId(),"BODEGA");
     }
     
     public void quitarProductoInventario(String producto, int cantidad) throws SQLException{

@@ -6,12 +6,15 @@
 package Vista;
 
 import Modelo.Conexion;
+import Modelo.Producto;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JTable;
 
 /**
  *
@@ -52,9 +55,9 @@ public class VistaCategoria extends javax.swing.JFrame {
         cbTipo = new javax.swing.JComboBox<>();
         cbCategoria = new javax.swing.JComboBox<>();
         botonBuscar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        resultadoBusqueda = new javax.swing.JTextArea();
         botonRegresar = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaResultados = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,16 +87,36 @@ public class VistaCategoria extends javax.swing.JFrame {
             }
         });
 
-        resultadoBusqueda.setColumns(20);
-        resultadoBusqueda.setRows(5);
-        jScrollPane1.setViewportView(resultadoBusqueda);
-
         botonRegresar.setText("Regresar");
         botonRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonRegresarActionPerformed(evt);
             }
         });
+
+        tablaResultados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "NOMBRE", "CATEGORIA", "DESCRIPCION", "PRECIO", "CANTIDAD"
+            }
+        ));
+        jScrollPane2.setViewportView(tablaResultados);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,18 +133,15 @@ public class VistaCategoria extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(idEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(idEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(245, 245, 245)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(77, 77, 77)
-                                        .addComponent(cbTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
+                                    .addComponent(cbTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cbCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addGap(91, 91, 91))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,12 +149,14 @@ public class VistaCategoria extends javax.swing.JFrame {
                         .addGap(145, 145, 145)
                         .addComponent(botonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(153, 153, 153)
                         .addComponent(botonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(441, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(38, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(29, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,11 +177,14 @@ public class VistaCategoria extends javax.swing.JFrame {
                     .addComponent(cbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(botonBuscar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                 .addComponent(botonRegresar)
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(216, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(62, Short.MAX_VALUE)))
         );
 
         pack();
@@ -171,12 +196,31 @@ public class VistaCategoria extends javax.swing.JFrame {
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
         Conexion con = new Conexion();
+        ArrayList<Producto> listaP;
+        
+        for(int f = 0; f<tablaResultados.getRowCount(); f++){
+            tablaResultados.setValueAt("", f, 0);
+            tablaResultados.setValueAt("", f, 1);
+            tablaResultados.setValueAt("", f, 2);
+            tablaResultados.setValueAt("", f, 3);
+            tablaResultados.setValueAt("", f, 4);
+            tablaResultados.setValueAt("", f, 5);
+        }
+        
         try {
-            resultadoBusqueda.setText(con.consultarProductosCategoria(Integer.parseInt(idEstablecimiento.getText()), String.valueOf(cbCategoria.getSelectedItem()),String.valueOf(cbTipo.getSelectedItem())));
-            resultadoBusqueda.setWrapStyleWord(true); 
-            resultadoBusqueda.setLineWrap(true); 
+            listaP = con.consultarProductosCategoria(Integer.parseInt(idEstablecimiento.getText()),String.valueOf(cbCategoria.getSelectedItem()),String.valueOf(cbTipo.getSelectedItem()));
+            int f = 0;
+            for(Producto producto: listaP){
+                tablaResultados.setValueAt(producto.getId(), f, 0);
+                tablaResultados.setValueAt(producto.getNombre(), f, 1);
+                tablaResultados.setValueAt(producto.getCategoria(), f, 2);
+                tablaResultados.setValueAt(producto.getDescripcion(), f, 3);
+                tablaResultados.setValueAt(producto.getValor(), f, 4);
+                tablaResultados.setValueAt(producto.getCantidad(), f, 5);
+                f +=1;
+            }
         } catch (SQLException ex) {
-            Logger.getLogger(VistaInventario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VistaCategoria.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_botonBuscarActionPerformed
 
@@ -214,6 +258,7 @@ public class VistaCategoria extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                new VistaCategoria().setVisible(true);
             }
         });
     }
@@ -228,7 +273,7 @@ public class VistaCategoria extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea resultadoBusqueda;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tablaResultados;
     // End of variables declaration//GEN-END:variables
 }

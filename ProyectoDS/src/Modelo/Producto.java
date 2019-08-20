@@ -15,13 +15,9 @@ public class Producto {
     private String nombre;
     private String descripcion;
     private double valor;
+    private int cantidad;
 
-    public Producto(int id, String categoria, String nombre, String descripcion, double valor) {
-        this.id = id;
-        this.categoria = categoria;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.valor = valor;
+    public Producto() {
     }
 
     
@@ -64,24 +60,12 @@ public class Producto {
     public void setValor(double valor) {
         this.valor = valor;
     }
-    
-    public void asignarCategoria(String categoria){
-        switch (categoria){
-            case "Electromestico":
-                setCategoria(categoria);
-            
-            case "Computo":
-                setCategoria(categoria);
-                
-            case "Accesorios":
-                setCategoria(categoria);
-                
-            default:
-                setCategoria("No asignada");
-        }     
+
+    public int getCantidad() {
+        return cantidad;
     }
-    
-    public void asignarLocal(){
-        
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 }

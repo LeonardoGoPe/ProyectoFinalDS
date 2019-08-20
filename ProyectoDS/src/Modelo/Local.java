@@ -120,7 +120,7 @@ public class Local {
     }
     
     public void mostrarInventario() throws SQLException{
-        cnx.consultarProductos(getId(), "LOCAL");
+        cnx.consultarProductos(getId(),"LOCAL");
     }
     
     public void mostrarProductosCategoria(String categoria) throws SQLException{

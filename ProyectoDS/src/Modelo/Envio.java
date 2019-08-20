@@ -9,14 +9,14 @@ package Modelo;
  *
  * @author Leonardo Gomez
  */
-public class Repartidor {
+public class Envio {
     private int id;
     private String usuario;
-    private String nombre;
-    private String apellido;
-    private String estado;
+    private String direccion;
+    private String descripcion;
+    private String tipoEnvio;
 
-    public Repartidor() {
+    public Envio() {
     }
 
     public int getId() {
@@ -35,27 +35,29 @@ public class Repartidor {
         this.usuario = usuario;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getTipoEnvio() {
+        return tipoEnvio;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setTipoEnvio(String tipoEnvio) {
+        this.tipoEnvio = tipoEnvio;
     }
+    
+    
 }

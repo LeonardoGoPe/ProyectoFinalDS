@@ -32,9 +32,11 @@ public class VistaJefeBodega extends javax.swing.JFrame {
 
         jInternalFrame1 = new javax.swing.JInternalFrame();
         botonConsulta = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        botonStock = new javax.swing.JButton();
+        botonAsignarR = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        botonReportes = new javax.swing.JButton();
+        botonLiberarR = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,46 +49,65 @@ public class VistaJefeBodega extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Enviar stock");
+        botonStock.setText("Enviar stock");
 
-        jButton3.setText("Asignar repartidor");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botonAsignarR.setText("Asignar repartidor");
+        botonAsignarR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                botonAsignarRActionPerformed(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Jefe de Bodega");
 
+        botonReportes.setText("Ver reporte repartidores");
+        botonReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonReportesActionPerformed(evt);
+            }
+        });
+
+        botonLiberarR.setText("Liberar repartidor");
+        botonLiberarR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonLiberarRActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
         jInternalFrame1Layout.setHorizontalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addGap(81, 81, 81)
+                .addGap(91, 91, 91)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonStock, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(110, Short.MAX_VALUE))
+                            .addComponent(botonAsignarR, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonLiberarR, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botonConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonStock, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonAsignarR, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonLiberarR, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addComponent(botonReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -102,16 +123,25 @@ public class VistaJefeBodega extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jInternalFrame1)
-                .addContainerGap())
+                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void botonAsignarRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAsignarRActionPerformed
+        VistaAsginarRepartidor vb = new VistaAsginarRepartidor();
+        vb.setVisible(true);
+        vb.getBotonRegresar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                if(ae.getSource().equals(vb.getBotonRegresar())){
+                    vb.setVisible(false);
+                   }
+            }
+        });
+    }//GEN-LAST:event_botonAsignarRActionPerformed
 
     private void botonConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultaActionPerformed
         VistaBusqueda vb = new VistaBusqueda();
@@ -125,6 +155,32 @@ public class VistaJefeBodega extends javax.swing.JFrame {
             }
         });
     }//GEN-LAST:event_botonConsultaActionPerformed
+
+    private void botonLiberarRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLiberarRActionPerformed
+        VistaAsginarRepartidor vb = new VistaAsginarRepartidor();
+        vb.setVisible(true);
+        vb.getBotonRegresar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                if(ae.getSource().equals(vb.getBotonRegresar())){
+                    vb.setVisible(false);
+                   }
+            }
+        });
+    }//GEN-LAST:event_botonLiberarRActionPerformed
+
+    private void botonReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReportesActionPerformed
+        VistaReportesRepartidores vb = new VistaReportesRepartidores();
+        vb.setVisible(true);
+        vb.getBotonRegresar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                if(ae.getSource().equals(vb.getBotonRegresar())){
+                    vb.setVisible(false);
+                   }
+            }
+        });
+    }//GEN-LAST:event_botonReportesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,9 +219,11 @@ public class VistaJefeBodega extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonAsignarR;
     private javax.swing.JButton botonConsulta;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton botonLiberarR;
+    private javax.swing.JButton botonReportes;
+    private javax.swing.JButton botonStock;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

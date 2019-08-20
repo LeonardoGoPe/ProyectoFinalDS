@@ -69,28 +69,35 @@ public class Conexion {
         this.conn = conn;
     }
     
-    public String consultarProductos(int id, String tipoEstablecimiento) throws SQLException{
-        String format = "%1$s %2$40s %3$30s";
-        String someLine = "";
-        sql = conn.createStatement();
+    public ArrayList<Producto> consultarProductos(int id, String tipoEstablecimiento) throws SQLException{
+        CallableStatement stmt;
+        ResultSet resultado = null;
         if(tipoEstablecimiento.equals("LOCAL")){
-            rs = sql.executeQuery("SELECT * FROM PRODUCTO_LOCAL WHERE ID_LOCAL="+id);
+            stmt = conn.prepareCall("{CALL PRESENTAR_PRODUCTOS_LOCAL(?)}");
+            stmt.setInt(1, id);
+            resultado = stmt.executeQuery();
         }
         else{
-            rs = sql.executeQuery("SELECT * FROM PRODUCTO_BODEGA WHERE ID_BODEGA="+id);
+            stmt = conn.prepareCall("{CALL PRESENTAR_PRODUCTOS_BODEGA(?)}");
+            stmt.setInt(1, id);
+            resultado = stmt.executeQuery();
         }
-        someLine += String.format(format, "ID", "NOMBRE_PRODUCTO","CANTIDAD"+"\n");
-        while(rs.next()){
-            System.out.println(rs.getString("ID")+" "+rs.getString("NOMBRE_PRODUCTO")+" "+rs.getString("CANTIDAD"));
-            someLine += String.format(format, rs.getString("ID"), rs.getString("NOMBRE_PRODUCTO"),rs.getString("CANTIDAD")+"\n");
+        ArrayList<Producto> listaProductos = new ArrayList();
+        while(resultado.next()){
+            Producto p = new Producto();
+            p.setId(resultado.getInt("ID"));
+            p.setNombre( resultado.getString("NOMBRE"));
+            p.setCategoria(resultado.getString("CATEGORIA"));
+            p.setDescripcion(resultado.getString("DESCRIPCION"));
+            p.setValor(resultado.getDouble("PRECIO"));
+            p.setCantidad(resultado.getInt("CANTIDAD"));
+            listaProductos.add(p);
         }
-        return someLine;
+        return listaProductos;
     }
     
-    public String consultarProductosCategoria(int id, String categoria,String tipoEstablecimiento) throws SQLException{
+    public ArrayList<Producto> consultarProductosCategoria(int id, String categoria,String tipoEstablecimiento) throws SQLException{
         CallableStatement stmt;
-        String format = "%1$s %2$40s %3$30s";
-        String someLine = "";
         if(tipoEstablecimiento.equals("LOCAL")){
             stmt = conn.prepareCall("{CALL FILTRAR_CATEGORIA_LOCAL(?,?)}");
             stmt.setString(1, categoria);
@@ -102,12 +109,18 @@ public class Conexion {
             stmt.setInt(2, id);
         }
         ResultSet resultado = stmt.executeQuery();
-        someLine += String.format(format, "NOMBRE", "DESCRIPCION","CANTIDAD"+"\n");
+        ArrayList<Producto> listaProductos = new ArrayList();
         while(resultado.next()){
-            System.out.println(resultado.getString("NOMBRE")+" "+resultado.getString("DESCRIPCION")+" "+resultado.getString("CANTIDAD"));
-            someLine += String.format(format, resultado.getString("NOMBRE"), resultado.getString("DESCRIPCION"),resultado.getString("CANTIDAD")+"\n");
+            Producto p = new Producto();
+            p.setId(resultado.getInt("ID"));
+            p.setNombre( resultado.getString("NOMBRE"));
+            p.setCategoria(resultado.getString("CATEGORIA"));
+            p.setDescripcion(resultado.getString("DESCRIPCION"));
+            p.setValor(resultado.getDouble("PRECIO"));
+            p.setCantidad(resultado.getInt("CANTIDAD"));
+            listaProductos.add(p);
         }
-        return someLine;
+        return listaProductos;
     }
     
     public void quitarProductoBodega(int id, int nuevaCantidad, String nombreProducto) throws SQLException{
@@ -143,5 +156,60 @@ public class Conexion {
             stmt = conn.prepareCall("{CALL CAMBIAR_PERMISOS(?)}");
             stmt.setString(1, usuario);
             stmt.executeQuery();
+        }
+        
+        public ArrayList<Repartidor> obtenerRepartidores() throws SQLException{
+            CallableStatement stmt = conn.prepareCall("{CALL PRESENTAR_REPARTIDORES()}");
+            ResultSet resultado = stmt.executeQuery();
+            ArrayList<Repartidor> listaRepartiores= new ArrayList();
+            while(resultado.next()){
+                Repartidor r = new Repartidor();
+                r.setId(resultado.getInt("ID"));
+                r.setUsuario(resultado.getString("USUARIO"));
+                r.setNombre(resultado.getString("NOMBRE"));
+                r.setApellido(resultado.getString("APELLIDO"));
+                r.setEstado(resultado.getString("ESTADO"));
+                listaRepartiores.add(r);
+            }
+        return listaRepartiores;
+        }
+        
+        public void actualizarEstadoRepartidor(String usuario, String estado) throws SQLException{
+            CallableStatement stmt = conn.prepareCall("{CALL ACTUALIZAR_ESTADO_REPARTIDOR(?,?)}");
+            stmt.setString(1, usuario);
+            stmt.setString(2, estado);
+            stmt.executeQuery();
+        }
+        
+        public void crearEnvio(String usuario, String direccion, String descripcion, String tipoEnvio) throws SQLException{
+            CallableStatement stmt = conn.prepareCall("{CALL CREAR_ENVIO(?,?,?,?)}");
+            stmt.setString(1, usuario);
+            stmt.setString(2, direccion);
+            stmt.setString(3, descripcion);
+            stmt.setString(4, tipoEnvio);
+            stmt.executeQuery();
+        }
+        
+        public void modificarDescripcionEnvio(String usuario, String descripcion) throws SQLException{
+            CallableStatement stmt = conn.prepareCall("{CALL MODIFICAR_REPARTIDOR_ENVIO(?,?)}");
+            stmt.setString(1, usuario);
+            stmt.setString(2, descripcion);
+            stmt.executeQuery();
+        }
+        
+        public ArrayList<Envio> reporteEnvios() throws SQLException{
+            CallableStatement stmt = conn.prepareCall("{CALL PRESENTAR_REPARTIDOR_ENVIO()}");
+            ResultSet resultado = stmt.executeQuery();
+            ArrayList<Envio> listaEnvios= new ArrayList();
+            while(resultado.next()){
+                Envio e = new Envio();
+                e.setId(resultado.getInt("ID"));
+                e.setUsuario(resultado.getString("USUARIO_ENCARGADO"));
+                e.setDireccion(resultado.getString("DIRECCION"));
+                e.setDescripcion(resultado.getString("DESCRIPCION"));
+                e.setTipoEnvio(resultado.getString("TIPO_ENVIO"));
+                listaEnvios.add(e);
+            }
+        return listaEnvios;
         }
 }
