@@ -68,3 +68,10 @@ VALUES("MONITOR LG",1,100),
         ("TECLADO",1,90),
         ("SAMSUNG S7",1,40),
         ("ADAPTADOR VGA",1,300);
+        
+INSERT INTO REPARTIDOR(USUARIO,NOMBRE,APELLIDO,ESTADO)
+VALUES("gsuarez","Gabriel","Suarez","LIBRE"),
+		("fmosquera","Fernando","Mosquera","LIBRE"),
+        ("malvez","Maria","Alvez","LIBRE"),
+        ("kcastillo","Kevin","Castillo","LIBRE"),
+        ("psegura","Pablo","Segura","LIBRE");
