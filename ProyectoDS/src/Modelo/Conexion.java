@@ -19,13 +19,36 @@ import java.util.ArrayList;
  */
 public class Conexion {
     private Connection conn;
-    private String driver = "com.mysql.jdbc.Driver";
-    private String user = "root";
-    private String password = "123456";
-    private String url = "jdbc:mysql://localhost/proyectods";
+   
+        // Librería de MySQL
+    public static String driver = "com.mysql.jdbc.Driver";
+
+    // Nombre de la base de datos
+    public static String database = "ProyectoDS";
+
+    // Host
+    public static String hostname = "127.0.0.1";
+
+    // Puerto
+    public static String port = "33061";
+
+    // Ruta de nuestra base de datos (desactivamos el uso de SSL con "?useSSL=false")
+    public static String url = "jdbc:mysql://" + hostname + ":" + port + "/" + database + "?useSSL=false";
+
+    // Nombre de usuario
+    public static String user = "root";
+
+    // Clave de usuario
+    public static String password = "pass";
+    
     private ResultSet rs;
     private Statement sql;
    
+    
+    
+    
+    
+    
     public Conexion(){
         try {
             Class.forName(driver);
