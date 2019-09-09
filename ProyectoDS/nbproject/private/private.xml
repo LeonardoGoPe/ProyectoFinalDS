@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/USER/Desktop/GIT/ProyectoFinalDS/ProyectoDS/src/Vista/LoginVista.java</file>
-            <file>file:/C:/Users/USER/Desktop/GIT/ProyectoFinalDS/ProyectoDS/src/Vista/VistaLiberarRepartidor.java</file>
-            <file>file:/C:/Users/USER/Desktop/GIT/ProyectoFinalDS/ProyectoDS/src/Vista/VistaJefeBodega.java</file>
-            <file>file:/C:/Users/USER/Desktop/GIT/ProyectoFinalDS/ProyectoDS/src/Vista/VistaAsginarRepartidor.java</file>
-            <file>file:/C:/Users/USER/Desktop/GIT/ProyectoFinalDS/ProyectoDS/src/Vista/VistaReportesRepartidores.java</file>
-            <file>file:/C:/Users/USER/Desktop/GIT/ProyectoFinalDS/ProyectoDS/src/Modelo/Conexion.java</file>
+            <file>file:/C:/Users/USER/Desktop/GIT/ProyectoFinalDS/ProyectoDS/src/modelo/Conexion.java</file>
+            <file>file:/C:/Users/USER/Desktop/GIT/ProyectoFinalDS/ProyectoDS/src/vista/VistaReportesRepartidores.java</file>
+            <file>file:/C:/Users/USER/Desktop/GIT/ProyectoFinalDS/ProyectoDS/src/modelo/Producto.java</file>
+            <file>file:/C:/Users/USER/Desktop/GIT/ProyectoFinalDS/ProyectoDS/test/modelo/ConexionTest.java</file>
+            <file>file:/C:/Users/USER/Desktop/GIT/ProyectoFinalDS/ProyectoDS/src/vista/VistaCategoria.java</file>
+            <file>file:/C:/Users/USER/Desktop/GIT/ProyectoFinalDS/ProyectoDS/src/vista/VistaInventario.java</file>
+            <file>file:/C:/Users/USER/Desktop/GIT/ProyectoFinalDS/ProyectoDS/src/modelo/Repartidor.java</file>
         </group>
     </open-files>
 </project-private>
