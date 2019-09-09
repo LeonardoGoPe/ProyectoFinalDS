@@ -3,7 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/roboto/Documents/Espol/SoftwareDesign/ProyetoFinalDS/ProyectoFinalDS/ProyectoDS/src/Modelo/Conexion.java</file>
+            <file>file:/home/roboto/Documents/Espol/SoftwareDesign/ProyetoFinalDS/ProyectoFinalDS/ProyectoDS/src/modelo/Local.java</file>
+            <file>file:/home/roboto/Documents/Espol/SoftwareDesign/ProyetoFinalDS/ProyectoFinalDS/ProyectoDS/src/vista/VistaAgregar.java</file>
+            <file>file:/home/roboto/Documents/Espol/SoftwareDesign/ProyetoFinalDS/ProyectoFinalDS/ProyectoDS/src/vista/VistaGerente.java</file>
+            <file>file:/home/roboto/Documents/Espol/SoftwareDesign/ProyetoFinalDS/ProyectoFinalDS/ProyectoDS/src/vista/VistaInventario.java</file>
+            <file>file:/home/roboto/Documents/Espol/SoftwareDesign/ProyetoFinalDS/ProyectoFinalDS/ProyectoDS/src/vista/VistaLiberarRepartidor.java</file>
+            <file>file:/home/roboto/Documents/Espol/SoftwareDesign/ProyetoFinalDS/ProyectoFinalDS/ProyectoDS/src/modelo/JefeBodega.java</file>
+            <file>file:/home/roboto/Documents/Espol/SoftwareDesign/ProyetoFinalDS/ProyectoFinalDS/ProyectoDS/src/vista/VistaAsginarRepartidor.java</file>
+            <file>file:/home/roboto/Documents/Espol/SoftwareDesign/ProyetoFinalDS/ProyectoFinalDS/ProyectoDS/test/modelo/ConexionTest.java</file>
+            <file>file:/home/roboto/Documents/Espol/SoftwareDesign/ProyetoFinalDS/ProyectoFinalDS/ProyectoDS/src/modelo/Bodega.java</file>
+            <file>file:/home/roboto/Documents/Espol/SoftwareDesign/ProyetoFinalDS/ProyectoFinalDS/ProyectoDS/src/vista/LoginVista.java</file>
+            <file>file:/home/roboto/Documents/Espol/SoftwareDesign/ProyetoFinalDS/ProyectoFinalDS/ProyectoDS/src/vista/VistaPermisos.java</file>
+            <file>file:/home/roboto/Documents/Espol/SoftwareDesign/ProyetoFinalDS/ProyectoFinalDS/ProyectoDS/src/vista/VistaCategoria.java</file>
+            <file>file:/home/roboto/Documents/Espol/SoftwareDesign/ProyetoFinalDS/ProyectoFinalDS/ProyectoDS/src/modelo/Conexion.java</file>
+            <file>file:/home/roboto/Documents/Espol/SoftwareDesign/ProyetoFinalDS/ProyectoFinalDS/ProyectoDS/src/vista/VistaBusqueda.java</file>
+            <file>file:/home/roboto/Documents/Espol/SoftwareDesign/ProyetoFinalDS/ProyectoFinalDS/ProyectoDS/src/vista/VistaReportesRepartidores.java</file>
         </group>
     </open-files>
 </project-private>

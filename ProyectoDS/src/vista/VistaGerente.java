@@ -17,7 +17,7 @@ import javax.swing.JLabel;
  * @author vielka
  */
 public class VistaGerente extends javax.swing.JFrame {
-    Conexion conn = new Conexion();
+    Conexion conn =Conexion.getConexion();
 
     /**
      * Creates new form GerenteVista

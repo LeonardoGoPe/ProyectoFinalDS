@@ -16,7 +16,7 @@ public class Bodega {
     private JefeBodega jefeBodega;
     private List repartidores;
     private Map<Producto,Integer> inventario;
-    private Conexion cnx = new Conexion();
+    private Conexion cnx =Conexion.getConexion();
 
     public Bodega(int id, String direccion) {
         this.id = id;

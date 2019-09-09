@@ -183,7 +183,7 @@ public class VistaAgregar extends javax.swing.JFrame {
 
     private void agregarStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarStockActionPerformed
         evt.getID();
-        Conexion conn = new Conexion();
+        Conexion conn =Conexion.getConexion();
         try {
             conn.agregarProductosLocal(Integer.parseInt(idLocal.getText()), Integer.parseInt(stock.getText()), String.valueOf(cbProductos.getSelectedItem()));
             System.out.println("Agregado exitoso");

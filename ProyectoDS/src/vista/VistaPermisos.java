@@ -18,7 +18,7 @@ import javax.swing.JTextField;
  * @author USER
  */
 public class VistaPermisos extends javax.swing.JFrame {
-    Conexion cnx = new Conexion();
+    Conexion cnx =Conexion.getConexion();
 
     /**
      * Creates new form VistaPermisos

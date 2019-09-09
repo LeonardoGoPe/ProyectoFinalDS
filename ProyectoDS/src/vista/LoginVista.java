@@ -19,7 +19,7 @@ import javax.swing.JTextField;
  * @author vielka
  */
 public class LoginVista extends javax.swing.JFrame {
-    Conexion cnx = new Conexion();
+    Conexion cnx =Conexion.getConexion();
     /**
      * Creates new form LoginVista
      */

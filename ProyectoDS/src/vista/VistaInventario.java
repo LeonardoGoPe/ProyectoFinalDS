@@ -186,7 +186,7 @@ public class VistaInventario extends javax.swing.JFrame {
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
         evt.getID();
-        Conexion con = new Conexion();
+        Conexion con =Conexion.getConexion();
         try {
             List<Producto> listaP = con.consultarProductos(Integer.parseInt(idLocal.getText()),String.valueOf(tipoEstablecimiento.getSelectedItem()));
             int f = 0;

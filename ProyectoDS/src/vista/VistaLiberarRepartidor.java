@@ -23,7 +23,7 @@ import javax.swing.JTextField;
  */
 public class VistaLiberarRepartidor extends javax.swing.JFrame {
 
-    Conexion cnn = new Conexion();
+    Conexion cnn =Conexion.getConexion();
     /**
      * Creates new form VistaLiberarRepartidor
      */

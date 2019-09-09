@@ -19,7 +19,7 @@ public class Local {
     private List<Producto> productos;
     private List consulta;
     private Map<Producto,Integer> inventario;
-    private Conexion cnx = new Conexion();
+    private Conexion cnx =Conexion.getConexion();
     
     public Local(int id, String direccion) {
         this.id = id;

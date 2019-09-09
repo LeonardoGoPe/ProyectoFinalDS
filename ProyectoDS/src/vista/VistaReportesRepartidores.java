@@ -24,7 +24,7 @@ import javax.swing.JTable;
  */
 public class VistaReportesRepartidores extends javax.swing.JFrame {
 
-    Conexion cnn = new Conexion();
+    Conexion cnn =Conexion.getConexion();
     /** Creates new form VistaReportesRepartidores */
     public VistaReportesRepartidores() {
         initComponents();

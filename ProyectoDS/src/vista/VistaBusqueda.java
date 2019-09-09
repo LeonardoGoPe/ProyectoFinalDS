@@ -17,7 +17,7 @@ import javax.swing.JLabel;
  * @author vielka
  */
 public class VistaBusqueda extends javax.swing.JFrame {
-    Conexion cnx = new Conexion();
+    Conexion cnx =Conexion.getConexion();
 
     /**
      * Creates new form VistaBusqueda

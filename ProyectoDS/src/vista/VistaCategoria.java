@@ -241,7 +241,7 @@ public class VistaCategoria extends javax.swing.JFrame {
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
         evt.getID();
-        Conexion con = new Conexion();
+        Conexion con =Conexion.getConexion();
         List<Producto> listaP;
         
         for(int f = 0; f<tablaResultados.getRowCount(); f++){

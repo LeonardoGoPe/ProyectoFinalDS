@@ -32,7 +32,7 @@ public class ConexionTest extends TestCase{
         System.out.println("consultarProductos - Existe el producto TECLADO en el inventario del LOCAL 1");
         int id = 1;
         String tipoEstablecimiento = "LOCAL";
-        Conexion instance = new Conexion();
+        Conexion instance =Conexion.getConexion();
         
         Producto expResult = new Producto();
         expResult.setId(0);
@@ -56,7 +56,7 @@ public class ConexionTest extends TestCase{
         System.out.println("consultarProductos - Existe el producto MOUSE en el inventario del LOCAL 1");
         int id = 1;
         String tipoEstablecimiento = "LOCAL";
-        Conexion instance = new Conexion();
+        Conexion instance =Conexion.getConexion() ;
         
         Producto expResult = new Producto();
         expResult.setId(0);
@@ -80,7 +80,7 @@ public class ConexionTest extends TestCase{
         System.out.println("consultarProductos - Existe el producto PARLANTES en el inventario del LOCAL 1");
         int id = 1;
         String tipoEstablecimiento = "LOCAL";
-        Conexion instance = new Conexion();
+        Conexion instance =Conexion.getConexion();
         
         Producto expResult = new Producto();
         expResult.setId(0);
@@ -106,7 +106,7 @@ public class ConexionTest extends TestCase{
         int id = 0;
         String categoria = "COMPUTO";
         String tipoEstablecimiento = "BODEGA";
-        Conexion instance = new Conexion();
+        Conexion instance =Conexion.getConexion();
         String expResult = "COMPUTO";
         List<Producto> result = instance.consultarProductosCategoria(1, categoria, tipoEstablecimiento);
         result.forEach((p) -> {
@@ -123,7 +123,7 @@ public class ConexionTest extends TestCase{
         System.out.println("consultarProductos - Se consulta el precio de PARLANTES");
         int id = 1;
         String tipoEstablecimiento = "LOCAL";
-        Conexion instance = new Conexion();
+        Conexion instance =Conexion.getConexion();
         
         Producto expResult = new Producto();
         expResult.setId(0);
@@ -147,7 +147,7 @@ public class ConexionTest extends TestCase{
         System.out.println("consultarProductos - Se consulta el precio de un HUAWEI");
         int id = 1;
         String tipoEstablecimiento = "LOCAL";
-        Conexion instance = new Conexion();
+        Conexion instance =Conexion.getConexion();
         
         Producto expResult = new Producto();
         expResult.setId(0);
@@ -171,7 +171,7 @@ public class ConexionTest extends TestCase{
         System.out.println("consultarProductos - Se consulta el precio de un TECLADO");
         int id = 1;
         String tipoEstablecimiento = "LOCAL";
-        Conexion instance = new Conexion();
+        Conexion instance =Conexion.getConexion();
         
         Producto expResult = new Producto();
         expResult.setId(0);
@@ -193,7 +193,7 @@ public class ConexionTest extends TestCase{
     @Test
     public void testConsultarRepartidor1() throws Exception {
         System.out.println("consultarRepartidor - Se consulta si existe el usuario gsuarez");
-        Conexion instance = new Conexion();
+        Conexion instance =Conexion.getConexion();
         Repartidor expResult = new Repartidor();
         
         expResult.setId(0);
@@ -214,7 +214,7 @@ public class ConexionTest extends TestCase{
     @Test
     public void testConsultarRepartidor2() throws Exception {
         System.out.println("consultarRepartidor - Se consulta si existe el usuario psegura");
-        Conexion instance = new Conexion();
+        Conexion instance =Conexion.getConexion();
         Repartidor expResult = new Repartidor();
         
         expResult.setId(0);
@@ -235,7 +235,7 @@ public class ConexionTest extends TestCase{
     @Test
     public void testConsultarNombreDeUsuario() throws Exception {
         System.out.println("consultarRepartidor3 - Se consulta si existe el usuario fmosquera");
-        Conexion instance = new Conexion();
+        Conexion instance =Conexion.getConexion();
         Repartidor expResult = new Repartidor();
         
         expResult.setId(0);
